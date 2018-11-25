@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', calendar());
 function calendar(){
     var arrMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var mainDate = new Date();
- 
+    
     function calendarTime() {
         var mainDate = new Date(); 
         var time = document.querySelector ('.time');
@@ -51,26 +51,11 @@ function calendar(){
                 if (changeDate.getMonth() !== mainDate.getMonth()){
                     numberWrap.style.color = "grey";
                 }
-
                 numberWrap.innerText = changeDate.getDate();
                 changeDate.setDate(changeDate.getDate() + 1);
                 weekday.appendChild(numberWrap);
             } 
-            monthWrap.appendChild(weekday);  
-
-            monthWrap.addEventListener('click', function(evt){
-                var numberWrapClick = document.querySelectorAll ('.number');
-                var numberClick = document.querySelector ('.today');
-                for(let i=0; i<numberWrapClick.length; i++){
-                    console.log(numberWrapClick.length);
-                    if(evt.target ===  numberWrapClick[i]){
-                        var arrDayClick = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-                        // numberClick.innerText = numberWrapClick[i].textContent;
-                    } else if (evt.target ===  document.querySelector ('.now')){
-                        numberClick.innerText = 'Today';
-                    }
-                }
-            }) 
+            monthWrap.appendChild(weekday);
         }  
     }
 
@@ -85,15 +70,14 @@ function calendar(){
             mainDate.setMonth(mainDate.getMonth() + 1);
             monthNow.innerText = arrMonth[mainDate.getMonth()] + ' ' + mainDate.getFullYear();
             createDays();
-        }
+        }  
     })
 
 calendarTime();
 createDays();
 }
 
-
-
+document.addEventListener('DOMContentLoaded', tabShow());
 function tabShow(){
 
     var wrap = document.querySelector ('.wrap');
@@ -108,12 +92,8 @@ function tabShow(){
             if(evt.target === item[i]){
                 subitem [i].classList.add('active');
                 subitem [i].classList.remove('hidden');
-                item[i].style.fontWeight = 'bold';
+                item[i].style.color = '#332749';
             }
         }
     })
 }
-
-document.addEventListener('DOMContentLoaded', tabShow());
-
-

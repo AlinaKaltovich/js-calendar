@@ -102,12 +102,6 @@
     box-shadow: 0 0 0 2px #0B7E43;
 }
 
-.today{
-    border-top: 1px solid #6d6c6c;
-    padding: 20px 10px 15px 20px;
-    font-size: 15px;
-}
-
 .wrap{
     display: flex;
     margin-bottom: 300px;
@@ -116,7 +110,7 @@
     position: relative;
     text-align: center;
     width: 200px;
-    background: rgb(247, 230, 230);
+    background: #887979;
     margin: 10px;
 }
 .item-title{
