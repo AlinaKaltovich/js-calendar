@@ -101,6 +101,9 @@
     background: #0B7E43;
     box-shadow: 0 0 0 2px #0B7E43;
 }
+.other-month{
+    color: #808080;
+}
 
 .wrap{
     display: flex;
@@ -130,6 +133,9 @@
     background: inherit;
     width: inherit;
     padding-bottom: 10px;
+}
+.seen{
+   color: #332749; 
 }
 .subitem-link{
     text-decoration: none;

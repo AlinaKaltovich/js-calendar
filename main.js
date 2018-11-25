@@ -49,7 +49,7 @@ function calendar(){
                     numberWrap.classList.add ('now'); 
                 } 
                 if (changeDate.getMonth() !== mainDate.getMonth()){
-                    numberWrap.style.color = "grey";
+                    numberWrap.classList.add ('other-month');
                 }
                 numberWrap.innerText = changeDate.getDate();
                 changeDate.setDate(changeDate.getDate() + 1);
@@ -86,13 +86,13 @@ function tabShow(){
 
     wrap.addEventListener ('click', function(evt){  
         for (let i=0; i<item.length; i++){
-            subitem [i].classList.add('hidden');
-            subitem [i].classList.remove('active');
+            subitem[i].classList.add('hidden');
+            subitem[i].classList.remove('active');
 
             if(evt.target === item[i]){
-                subitem [i].classList.add('active');
-                subitem [i].classList.remove('hidden');
-                item[i].style.color = '#332749';
+                subitem[i].classList.add('active');
+                subitem[i].classList.remove('hidden');
+                item[i].classList.add('seen');
             }
         }
     })
