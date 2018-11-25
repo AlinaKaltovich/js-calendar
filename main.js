@@ -4,13 +4,8 @@ document.addEventListener('DOMContentLoaded', calendar());
 function calendar(){
     var arrMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var mainDate = new Date();
-    
-    function calendarTime() {
-        var mainDate = new Date(); 
-        var time = document.querySelector ('.time');
-        time.innerText = mainDate.toLocaleTimeString();
-        setTimeout (calendarTime, 1000);
-    }
+   
+    calendarTime();
 
     var dateNow = document.querySelector ('.date');
     var options = {
@@ -25,6 +20,28 @@ function calendar(){
     monthNow.innerText = arrMonth[mainDate.getMonth()] + ' ' + mainDate.getFullYear();
 
     var monthWrap = document.querySelector ('.month');
+    createDays();
+
+    var calendarWrap = document.querySelector('.calendar');
+    calendarWrap.addEventListener('click', function(evt){
+        if (evt.target ===  document.querySelector ('.arrow-prev')){
+            mainDate.setMonth(mainDate.getMonth() - 1);
+            monthNow.innerText = arrMonth[mainDate.getMonth()] + ' ' + mainDate.getFullYear();
+            createDays();
+        }
+        if (evt.target ===  document.querySelector ('.arrow-next')){
+            mainDate.setMonth(mainDate.getMonth() + 1);
+            monthNow.innerText = arrMonth[mainDate.getMonth()] + ' ' + mainDate.getFullYear();
+            createDays();
+        }  
+    }) 
+    
+    function calendarTime() {
+        var mainDate = new Date(); 
+        var time = document.querySelector ('.time');
+        time.innerText = mainDate.toLocaleTimeString();
+        setTimeout (calendarTime, 1000);
+    }
     
     function createDays() {
         var changeDate = new Date(mainDate.getFullYear(), mainDate.getMonth(),mainDate.getDate());
@@ -58,23 +75,6 @@ function calendar(){
             monthWrap.appendChild(weekday);
         }  
     }
-
-    var calendarWrap = document.querySelector('.calendar');
-    calendarWrap.addEventListener('click', function(evt){
-        if (evt.target ===  document.querySelector ('.arrow-prev')){
-            mainDate.setMonth(mainDate.getMonth() - 1);
-            monthNow.innerText = arrMonth[mainDate.getMonth()] + ' ' + mainDate.getFullYear();
-            createDays();
-        }
-        if (evt.target ===  document.querySelector ('.arrow-next')){
-            mainDate.setMonth(mainDate.getMonth() + 1);
-            monthNow.innerText = arrMonth[mainDate.getMonth()] + ' ' + mainDate.getFullYear();
-            createDays();
-        }  
-    })
-
-calendarTime();
-createDays();
 }
 
 document.addEventListener('DOMContentLoaded', tabShow());
