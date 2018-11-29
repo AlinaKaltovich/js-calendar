@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', calendar());
 
 function calendar(){
     var arrMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var arrDayClick = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     var mainDate = new Date();
    
     calendarTime();
@@ -23,17 +24,27 @@ function calendar(){
     createDays();
 
     var calendarWrap = document.querySelector('.calendar');
+
     calendarWrap.addEventListener('click', function(evt){
-        if (evt.target ===  document.querySelector ('.arrow-prev')){
+        var numberWrapClick = document.querySelectorAll ('.number');
+        var numberClick = document.querySelector ('.today');
+
+        if (evt.target === document.querySelector ('.arrow-prev')){
             mainDate.setMonth(mainDate.getMonth() - 1);
             monthNow.innerText = arrMonth[mainDate.getMonth()] + ' ' + mainDate.getFullYear();
             createDays();
-        }
-        if (evt.target ===  document.querySelector ('.arrow-next')){
+        } else if (evt.target === document.querySelector ('.arrow-next')){
             mainDate.setMonth(mainDate.getMonth() + 1);
             monthNow.innerText = arrMonth[mainDate.getMonth()] + ' ' + mainDate.getFullYear();
             createDays();
-        }  
+        }            
+        for(let i=0; i<numberWrapClick.length; i++){
+            if(evt.target ===  numberWrapClick[i]){
+                numberClick.innerText = arrDayClick[i%7] + ' ' + numberWrapClick[i].innerText;
+            } else if (evt.target ===  document.querySelector ('.now')){
+                numberClick.innerText = 'Today';
+            }
+        }
     }) 
     
     function calendarTime() {
